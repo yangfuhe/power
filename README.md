@@ -34,7 +34,7 @@ npm start
 目前完成的模块有：个人主页、资源配置、角色管理、用户管理、系统日志。
 
 ### mysql说明
-对mysql的封装逻辑在app/helpers.DB.js文件中，里面逻辑相信大家一目了然，这里需要特殊说明一点：当使用db.beginTransaction()开启事务后，操作数据库（包括增删改，当然查询就不所谓了）需要使用db.run()，因为开启事务和run函数里用到的mysql连接是同一个
+对mysql的封装逻辑在app/helpers/DB.js文件中，里面逻辑相信大家一目了然，这里需要特殊说明一点：当使用db.beginTransaction()开启事务后，操作数据库（包括增删改，当然查询就不所谓了）需要使用db.run()，因为开启事务和run函数里用到的mysql连接是同一个
 
 ### Contribute
 
