@@ -12,7 +12,7 @@ koa+mysql+redis+vue 实现权限控制
 
 服务端：
 
-服务端代码在app目录下，首先您需要安装mysql与redis，配置在app/config目录，dev.js为开发环境，pro.js为生产环境，修改mysql与redis参数配置，并把基础数据导入mysql数据库（基础数据sql为app/docs/base.sql），然后执行以下命令
+服务端代码在app目录下，首先您需要安装mysql与redis，配置在app/config目录，dev.js为开发环境，pro.js为生产环境，修改mysql与redis参数配置，并把基础数据导入mysql数据库（基础数据sql为app/docs/base.sql），然后执行以下命令（注：windows环境需在执行命令前把app/package.json中`export NODE_ENV='dev' && nodemon app.js`改为`export NODE_ENV='dev' && nodemon app.js`）
 
 ```bash
 cd app
