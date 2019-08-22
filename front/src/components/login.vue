@@ -2,7 +2,7 @@
     <div class="login-page">          
         <div class="main">
            <div class="form">
-               <p class="lg-title">百倍计划管理系统</p>
+               <p class="lg-title">XXXXX管理系统</p>
                 <el-input @keyup.enter.native="login" style="margin-top:25px" placeholder="请输入用户名" v-model="userName">
                     <i class="el-icon-user" slot="prepend"></i>                    
                 </el-input> 
