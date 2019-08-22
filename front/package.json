@@ -2,7 +2,7 @@
     "name": "power_front",
     "version": "1.0.0",
     "description": "",
-    "author": "apyangfuheyaaaaa <517174331@qq.com>",
+    "author": "yangfuhe <517174331@qq.com>",
     "private": true,
     "scripts": {
         "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

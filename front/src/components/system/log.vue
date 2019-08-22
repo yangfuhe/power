@@ -4,13 +4,14 @@
             <el-collapse-item title="筛选条件">
                 <el-form :inline="true"  :model="params" label-width="90px">
                 <el-form-item style="width:310px" label="用户名：">
-                        <el-input  v-model="params.userName"></el-input>
+                        <el-input @keyup.enter.native="search"   v-model="params.userName"></el-input>
                 </el-form-item>
                 <el-form-item  style="width:310px" label="ip：">
-                        <el-input  v-model="params.ip"></el-input>
+                        <el-input @keyup.enter.native="search"   v-model="params.ip"></el-input>
                 </el-form-item>
                  <el-form-item  style="width:310px" label="开始时间：">
                         <el-date-picker
+                        @change="search"
                         v-model="params.beginTime"
                         type="datetime"
                         placeholder="选择日期时间">
@@ -18,28 +19,29 @@
                 </el-form-item>
                  <el-form-item  style="width:310px" label="结束时间：">
                         <el-date-picker
-                        v-model="params.beginTime"
+                        @change="search"
+                        v-model="params.endTime"
                         type="datetime"
                         placeholder="选择日期时间">
                         </el-date-picker>
                 </el-form-item>
                 <el-form-item  style="width:310px" label="url：">
-                        <el-input  v-model="params.url"></el-input>
+                        <el-input @keyup.enter.native="search"   v-model="params.url"></el-input>
                 </el-form-item>
                 <el-form-item  style="width:310px" label="描述：">
-                        <el-input  v-model="params.des"></el-input>
+                        <el-input @keyup.enter.native="search"  v-model="params.des"></el-input>
                 </el-form-item>
                 <el-form-item  style="width:310px" label="状态码：">
-                        <el-input  v-model="params.status"></el-input>
+                        <el-input @keyup.enter.native="search"   v-model="params.status"></el-input>
                 </el-form-item>
                 <el-form-item  style="width:310px" label="类型：">
-                        <el-select v-model="params.type" placeholder="请选择">
+                        <el-select  @change="search" v-model="params.type" placeholder="请选择">
                             <el-option label="成功" value="1"> </el-option>
                             <el-option label="失败" value="2"> </el-option>
                             <el-option label="异常" value="3"> </el-option>
                         </el-select>
                 </el-form-item>
-                <el-button @click="params.pageNo = 1;queryLogs()" type="primary" icon="el-icon-search">搜索</el-button>
+                <el-button @click="search" type="primary" icon="el-icon-search">搜索</el-button>
            </el-form>
             </el-collapse-item>
         </el-collapse>
@@ -107,6 +109,10 @@ export default {
       this.queryLogs();
   },
   methods:{
+      search(){
+          this.pageNo = 1;
+          this.queryLogs();
+      },
       queryLogs(){
           let params = {
               ...this.params
@@ -123,7 +129,7 @@ export default {
               })
       },
       showErr(err){
-          this.$alert(err, '错误信息')
+          this.$alert(err, '失败信息')
       },
       showErrDetail(err){
           err = err.replace(/\\n/g, '<br/>')

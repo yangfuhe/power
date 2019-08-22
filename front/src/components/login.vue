@@ -3,10 +3,10 @@
         <div class="main">
            <div class="form">
                <p class="lg-title">百倍计划管理系统</p>
-                <el-input style="margin-top:25px" placeholder="请输入用户名" v-model="userName">
+                <el-input @keyup.enter.native="login" style="margin-top:25px" placeholder="请输入用户名" v-model="userName">
                     <i class="el-icon-user" slot="prepend"></i>                    
                 </el-input> 
-                <el-input style="margin-top:25px" type="password" placeholder="请输入密码" v-model="password">
+                <el-input @keyup.enter.native="login" style="margin-top:25px" type="password" placeholder="请输入密码" v-model="password">
                     <i class="el-icon-key" slot="prepend"></i>                    
                 </el-input>
                 <el-button @click="login"  style="width:300px;margin-top:25px" type="primary">登录</el-button>               

@@ -37,6 +37,7 @@
     </el-header>
     
     <el-main >
+      <p style="padding-bottom:15px">{{breadcrumb}}</p>      
       <router-view/>
     </el-main>
   </el-container>
@@ -49,7 +50,8 @@
       return {
         isCollapse: false,
         user:{},
-        menu:[]
+        menu:[],
+        breadcrumb:"个人中心"
       }
     },
     created(){
@@ -76,6 +78,14 @@
             }
           }
           this.menu =  arr;
+          let path = this.$router.history.current.path;
+          for(let m of this.menu){
+            for(let c of m.children){
+              if("/"+c.addr==path){
+                this.breadcrumb = m.name+"/"+c.name
+              }
+            }
+          }
         })
       },
       loginOut(){
@@ -83,6 +93,26 @@
           this.info("success","操作成功")
           this.$router.push("/login")
           })
+      }
+    },
+    watch: {
+      $route: {
+        handler: function(val){
+           let path = val.path;
+           let breadcrumb = ""
+           for(let m of this.menu){
+             for(let c of m.children){
+               if("/"+c.addr==path){
+                 breadcrumb = m.name+"/"+c.name
+               }
+             }
+           }
+           breadcrumb=breadcrumb||"个人中心";
+           this.breadcrumb = breadcrumb;
+
+        },
+        // 深度观察监听
+        deep: true
       }
     }
   }
